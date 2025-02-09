@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
 
 # TODO: Set your project name
 project(ExampleProject)
@@ -25,7 +25,7 @@ if (MSVC)
     add_compile_options(/std:c++latest)
     add_compile_options(/std:c11)
 else()
-    set(CMAKE_CXX_STANDARD 21)
+    set(CMAKE_CXX_STANDARD 20)
     set(CMAKE_CXX_STANDARD_REQUIRED ON)
     set(CMAKE_CXX_EXTENSIONS OFF)
     set(CMAKE_C_STANDARD 11)
