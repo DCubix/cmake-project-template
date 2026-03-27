@@ -14,9 +14,9 @@ if(CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
     )
 endif()
 
-# Default to Release when no build type is specified
+# Default to Debug when no build type is specified
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
-    set(CMAKE_BUILD_TYPE Release CACHE STRING "Build type" FORCE)
+    set(CMAKE_BUILD_TYPE Debug CACHE STRING "Build type" FORCE)
     set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS
         Debug Release MinSizeRel RelWithDebInfo
     )
@@ -62,18 +62,15 @@ elseif(APPLE OR UNIX)
 endif()
 
 # ── CPM.cmake ──────────────────────────────────────────────────────────────────
-set(CPM_VERSION "0.40.5")
 set(CPM_DOWNLOAD_LOCATION "${CMAKE_CURRENT_SOURCE_DIR}/cmake/CPM.cmake")
 
-if(NOT EXISTS "${CPM_DOWNLOAD_LOCATION}")
-    message(STATUS "Downloading CPM.cmake v${CPM_VERSION}...")
-    file(MAKE_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
-    file(
-        DOWNLOAD
-        "https://github.com/cpm-cmake/CPM.cmake/releases/download/v${CPM_VERSION}/CPM.cmake"
-        "${CPM_DOWNLOAD_LOCATION}"
-    )
-endif()
+message(STATUS "Downloading latest CPM.cmake...")
+file(MAKE_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+file(
+    DOWNLOAD
+    "https://github.com/cpm-cmake/CPM.cmake/releases/latest/download/CPM.cmake"
+    "${CPM_DOWNLOAD_LOCATION}"
+)
 
 include("${CPM_DOWNLOAD_LOCATION}")
 

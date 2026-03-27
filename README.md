@@ -48,7 +48,7 @@ The compiled binary is placed in `build/<preset-name>/`.
 ### Manual configuration
 
 ```bash
-cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+cmake -S . -B build
 cmake --build build
 ```
 
